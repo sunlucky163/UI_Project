@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2015", "dom"],
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@Api/*": ["src/api/*"],
+      "@Core/*": ["src/core/*"],
+      "@Constants/*": ["src/constants/*"],
+      "@Components/*": ["src/components/*"],
+      "@Utils/*": ["src/utils/*"],
+      "@Config/*": ["config/*"]
+    },
+    "typeRoots" : ["node_modules/@types"]
+  },
+  "include": [
+    "config",
+    "tests",
+    "src",
+    "node_modules",
+    "node_modules/puppeteer-tsd/src/index.d.ts"
+  ]
+}

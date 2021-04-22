@@ -1,0 +1,30 @@
+{
+    "scripts": {
+        "test": "jest --expand --maxWorkers=4 --config ./config/base/jest.config.js",
+        "eslint": "eslint ./config ./src ./tests --color --ext .ts",
+        "prettier": "prettier '**/**.ts' --ignore-path ./.prettierignore --write"
+    },
+    "dependencies": {
+        "@types/jest": "^24.0.18",
+        "@types/node": "^12.7.2",
+        "@types/puppeteer": "^1.19.1",
+        "@typescript-eslint/eslint-plugin": "^2.0.0",
+        "@typescript-eslint/parser": "^2.0.0",
+        "eslint": "^6.2.1",
+        "eslint-config-prettier": "^6.1.0",
+        "eslint-plugin-eslint-comments": "^3.1.2",
+        "eslint-plugin-eslint-plugin": "^2.1.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jest": "^23.0.4",
+        "eslint-plugin-prettier": "^3.1.0",
+        "jest": "^24.9.0",
+        "p-iteration": "^1.1.8",
+        "parse-url": "^5.0.1",
+        "prettier": "^1.18.2",
+        "puppeteer": "^1.19.0",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.5.3",
+        "url-parse": "^1.4.7",
+        "wait-for-expect": "^2.0.0"
+    }
+}
