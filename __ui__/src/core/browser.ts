@@ -2,7 +2,6 @@ import * as puppeteer from 'puppeteer';
 import { Config } from '@Core/config';
 import { Page } from '@Core/page';
 import { launchers } from '@Constants/launchers';
-import { forEachSeries } from 'p-iteration';
 
 export class Browser {
     private browser: puppeteer.Browser;
@@ -34,10 +33,6 @@ export class Browser {
     }
 
     async close(): Promise<void> {
-        await forEachSeries(
-            await this.browser.pages(),
-            async page => await page.close({ runBeforeUnload: true }),
-        );
         await this.browser.close();
     }
 }

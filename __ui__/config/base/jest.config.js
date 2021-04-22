@@ -3,7 +3,6 @@ module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
     moduleNameMapper: {
-        '^@Api/(.*)$': '<rootDir>/src/api/$1',
         '^@Core/(.*)$': '<rootDir>/src/core/$1',
         '^@Constants/(.*)$': '<rootDir>/src/constants/$1',
         '^@Components/(.*)$': '<rootDir>/src/components/$1',

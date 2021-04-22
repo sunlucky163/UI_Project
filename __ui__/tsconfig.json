@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@Api/*": ["src/api/*"],
       "@Core/*": ["src/core/*"],
       "@Constants/*": ["src/constants/*"],
       "@Components/*": ["src/components/*"],
