@@ -1,4 +1,4 @@
 export default {
-    baseUrl: 'https://santehnika-online.ru',
+    baseUrl: 'https://www.lamoda.ru/',
     launcher: 'debug',
 };

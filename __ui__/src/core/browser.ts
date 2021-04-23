@@ -21,7 +21,7 @@ export class Browser {
         await puppeteerPage.emulate({
             viewport: {
                 width: 1280,
-                height: 10000,
+                height: 1000,
             },
             userAgent:
                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
