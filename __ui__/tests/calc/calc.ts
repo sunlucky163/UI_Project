@@ -1,4 +1,4 @@
-import { Calc, getName } from 'modules/calc/calc';
+import { Calc, getName } from '../../src/calc/calc';
 
 const calc = new Calc();
 
