@@ -4,11 +4,11 @@ export class Calc {
   private PO = 'slovo';
 
   public sort(array) {
-    return array.sort()
+    return array.sort();
   }
 }
 
 export function getName(name) {
-  return name
-
+  console.log(name);
+  return name;
 }
