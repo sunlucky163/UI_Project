@@ -1,5 +1,4 @@
 export default {
-    baseUrl: 'https://www.lamoda.ru/',
-    launcher: 'headless',
+  baseUrl: 'https://www.lamoda.ru/',
+  launcher: 'debug',
 };
-
