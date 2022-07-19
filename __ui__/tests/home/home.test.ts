@@ -8,10 +8,10 @@ describe('Load Home Page', () => {
   let homePage: HomePage;
 
   beforeAll(async () => {
-    await browser.launch();
-    page = await browser.getPage();
-    homePage = new HomePage(page);
-    await homePage.open();
+    await browser.launch(); //открытие браузера
+    page = await browser.getPage(); //открытие вкладки и передача в page всех методов Page
+    homePage = new HomePage(page); //передача контекста page в homePage
+    await homePage.open(); // открытие homePage
   });
 
   afterAll(async () => {

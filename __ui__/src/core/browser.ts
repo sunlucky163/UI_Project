@@ -2,6 +2,7 @@ import * as puppeteer from 'puppeteer';
 import { Config } from '@Core/config';
 import { Page } from '@Core/page';
 import { launchers } from '@Constants/launchers';
+import { timeout } from '@Utils/timeout';
 
 export class Browser {
   private browser: puppeteer.Browser;
@@ -14,6 +15,12 @@ export class Browser {
 
   async launch(): Promise<void> {
     this.browser = await puppeteer.launch(this.launcher);
+  }
+
+  async method(): Promise<string> {
+    await timeout(3000);
+    const result = await this.browser.userAgent();
+    return result;
   }
 
   async getPage(): Promise<Page> {
