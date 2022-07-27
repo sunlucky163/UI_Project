@@ -21,7 +21,7 @@
         "p-iteration": "^1.1.8",
         "parse-url": "^5.0.1",
         "prettier": "^1.18.2",
-        "puppeteer": "^1.19.0",
+        "puppeteer": "^11.0.0",
         "ts-jest": "^24.0.2",
         "typescript": "^3.5.3",
         "url-parse": "^1.4.7",

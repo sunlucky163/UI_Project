@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import { Element } from '@Core/element';
 // eslint-disable-next-line no-duplicate-imports
-import { NavigationOptions } from 'puppeteer';
 import { format } from 'util';
 
 export class Page {
@@ -22,11 +21,27 @@ export class Page {
     await this.page.goto(url, options);
   }
 
-  async waitFor(selector, options = { visible: true }, ...args): Promise<void> {
-    if (typeof selector === 'number') {
-      await this.page.waitFor(selector);
-    } else {
-      await this.page.waitFor(selector, options, ...args);
+  async waitFor(
+    expected: number | Function | string,
+    options: puppeteer.FrameWaitForFunctionOptions | puppeteer.WaitForSelectorOptions = {
+      timeout: 60000,
+    },
+    ...args: puppeteer.SerializableOrJSHandle[]
+  ): Promise<void> {
+    switch (typeof expected) {
+      case 'number':
+        await this.page.waitForTimeout(expected);
+        break;
+      case 'function':
+        await this.page.waitForFunction(expected, options, ...args);
+        break;
+      case 'string':
+        if (expected.startsWith('/') || expected.startsWith('./')) {
+          await this.page.waitForXPath(expected, options);
+        } else {
+          await this.page.waitForSelector(expected, options);
+        }
+        break;
     }
   }
 
@@ -49,7 +64,7 @@ export class Page {
     return elements.map((element) => new Element(element));
   }
 
-  async waitForNavigation(options: NavigationOptions = { waitUntil: 'domcontentloaded' }): Promise<void> {
+  async waitForNavigation(options: puppeteer.WaitForOptions = { waitUntil: 'domcontentloaded' }): Promise<void> {
     await this.page.waitForNavigation(options);
   }
 
@@ -57,9 +72,13 @@ export class Page {
     return this.page.url();
   }
 
-  async getByText(text: string): Promise<Element> {
+  her() {
+    console.log('her');
+  }
+
+  async getElementByText(text = '') {
     const selector = format('.//*[contains(text(), "%s")]', text);
-    const element = await this.$x(selector);
+    const element = await this.page.$x(selector);
     return element;
   }
 }

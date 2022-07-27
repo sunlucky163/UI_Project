@@ -1,4 +1,4 @@
 export default {
-  baseUrl: 'https://www.lamoda.ru/',
+  baseUrl: 'https://www.glassesusa.com/',
   launcher: 'debug',
 };

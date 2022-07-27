@@ -4,7 +4,7 @@ import { Header } from '@Components/home/header/header';
 
 export class HomePage extends Component {
   private selectors = {
-    header: '[class="logo-line-wrapper width-wrapper"]',
+    header: '[id="page-header"]',
   };
 
   async open(): Promise<void> {
@@ -17,7 +17,8 @@ export class HomePage extends Component {
     return new Header(this.page, header);
   }
 
-  getUrl() {
-    return this.page.url();
+  async getByText(text = '') {
+    // eslint-disable-next-line no-return-await
+    return await this.page.getElementByText();
   }
 }
