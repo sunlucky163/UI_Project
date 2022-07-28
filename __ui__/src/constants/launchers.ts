@@ -1,14 +1,20 @@
 import * as puppeteer from 'puppeteer';
 
-const defaultArgs = ['--no-first-run', '--lang=en-US', '--no-sandbox', '--disable-gpu'];
+const defaultArgs = ['--embedded-extension-options', '--enable-experimental-extension-apis'];
 
-export const launchers: { [key: string]: puppeteer.LaunchOptions } = {
+export const launchers: {
+  [key: string]: puppeteer.BrowserLaunchArgumentOptions & puppeteer.LaunchOptions & puppeteer.BrowserConnectOptions;
+} = {
   debug: {
-    args: [...defaultArgs, '--start-maximized'],
-    devtools: true,
+    args: [
+      ...defaultArgs,
+      '--start-maximized',
+    ],
+    devtools: false,
     executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    slowMo: 10,
+    slowMo: 15,
     ignoreHTTPSErrors: true,
+    headless: false,
   },
   headless: {
     args: defaultArgs,

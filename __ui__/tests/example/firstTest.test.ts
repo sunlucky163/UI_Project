@@ -2,6 +2,7 @@ import { HomePage } from '@Components/home/homePage';
 import { Browser } from '@Core/browser';
 import { Page } from '@Core/page';
 import { timeout } from '@Utils/timeout';
+import { CategoryPage } from '@Components/home/categoryPage';
 
 describe('First test', () => {
   const browser = new Browser();
@@ -10,23 +11,32 @@ describe('First test', () => {
 
   beforeAll(async () => {
     await browser.launch();
-    page = await browser.getPage();
-    homePage = new HomePage(page);
   });
 
   afterAll(async () => {
     await browser.close();
   });
-  //need create test with lamoda with use method click for elements (3-5)
   test('should be', async () => {
+    page = await browser.getPage();
+    homePage = new HomePage(page);
     await homePage.open();
-    await page.getByText('');
-    const first = await page.$('');
-    await first.click();
-    await first.attributes();
-    await first.click();
-    const second = await page.$('selector');
-    await second.click();
-    await timeout(100000);
+    await page.waitFor('[aria-label="Close popup"]')
+    const closePopup = await page.$('[aria-label="Close popup"]')
+    await closePopup.click()
+    await timeout(6000);
+
+    const header = await homePage.getHeader();
+    await header.openCategory('Sunglasses');
+    console.log(1)
+    await page.waitForNavigation();
+    const categoryPage = new CategoryPage(page);
+    const mainContent = await categoryPage.getMainContent();
+    await mainContent.clickProduct();
+    await timeout(10000);
   });
 });
+
+/// Create test:
+// 1)Open category page
+// 2) Create class for one product,
+// 3) click on the myPicks(heart) button, but non-first product

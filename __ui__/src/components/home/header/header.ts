@@ -1,13 +1,17 @@
-import {Component} from "@Components/component";
+import { Component } from '@Components/component';
+import { HomePage } from '@Components/home/homePage';
+import { timeout } from '@Utils/timeout';
+import { format } from 'util';
 
 export class Header extends Component {
-    private selectors = {
-        linkKids: '[data-genders="children"]',
-    };
+  private selectors = {
+    sunglasses: 'sunglasses',
+  };
 
-    async clickLinkKids(): Promise<void> {
-        await this.page.waitFor(this.selectors.linkKids);
-        const link = await this.element.$(this.selectors.linkKids);
-        await link.click();
-    }
+  async openCategory(type: string) {
+    // await this.page.waitFor(format('.//*[contains(text(), "%s")]', type));
+    await timeout(1000)
+    const category = await this.element.getByText(type);
+    await category.click();
+  }
 }
